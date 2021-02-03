@@ -1,0 +1,10 @@
+D:\dev\C#Work\Selfstudy_Winform3\Selfstudy_Winform3\bin\Debug\Selfstudy_Winform3.exe.config
+D:\dev\C#Work\Selfstudy_Winform3\Selfstudy_Winform3\bin\Debug\Selfstudy_Winform3.exe
+D:\dev\C#Work\Selfstudy_Winform3\Selfstudy_Winform3\bin\Debug\Selfstudy_Winform3.pdb
+D:\dev\C#Work\Selfstudy_Winform3\Selfstudy_Winform3\obj\Debug\Selfstudy_Winform3.csprojAssemblyReference.cache
+D:\dev\C#Work\Selfstudy_Winform3\Selfstudy_Winform3\obj\Debug\Selfstudy_Winform3.Form1.resources
+D:\dev\C#Work\Selfstudy_Winform3\Selfstudy_Winform3\obj\Debug\Selfstudy_Winform3.Properties.Resources.resources
+D:\dev\C#Work\Selfstudy_Winform3\Selfstudy_Winform3\obj\Debug\Selfstudy_Winform3.csproj.GenerateResource.cache
+D:\dev\C#Work\Selfstudy_Winform3\Selfstudy_Winform3\obj\Debug\Selfstudy_Winform3.csproj.CoreCompileInputs.cache
+D:\dev\C#Work\Selfstudy_Winform3\Selfstudy_Winform3\obj\Debug\Selfstudy_Winform3.exe
+D:\dev\C#Work\Selfstudy_Winform3\Selfstudy_Winform3\obj\Debug\Selfstudy_Winform3.pdb
