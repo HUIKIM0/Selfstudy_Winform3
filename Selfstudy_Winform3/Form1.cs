@@ -5,7 +5,7 @@ namespace Selfstudy_Winform3
 {
     public partial class Form1 : Form
     {
-        public delegate int delFuncDow_Edge(int i);   //int 도우
+        public delegate int delFuncDow_Edge(int i);   //int 도우 or int 엣지
         public delegate int delFuncTopping(string strOrder, int Ea);  //string 토핑종류, int 토핑추가횟수
         public delegate object delFuncOrder(object i);  //var, object
 
@@ -47,6 +47,11 @@ namespace Selfstudy_Winform3
                 iEdgeOrder = 3;
             }
 
+            // int타입, delegate
+            // 도우 rdbtn 이랑 엣지 rdbtn
+            fCallBackDelegate(iDowOrder, fDow);
+            fCallBackDelegate(iEdgeOrder, fEdge);
+
             flboxOrderText("----------------------------------");
             flboxOrderText(string.Format("전체 주문가격은 {0}원 입니다", _iTotalPrice));
 
@@ -73,6 +78,7 @@ namespace Selfstudy_Winform3
                 strOrder = string.Format("도우는 씬을 선택 하셨습니다. ({0}원)", iPrice);
             }
 
+            flboxOrderText(strOrder);   //주문한거 List에 찍혀야 하니까
             return _iTotalPrice = _iTotalPrice + iPrice;
         }
 
@@ -103,11 +109,15 @@ namespace Selfstudy_Winform3
                 strOrder = string.Format("엣지는 변경하지 않으셨습니다. ({0}원)", iPrice);
             }
 
+            flboxOrderText(strOrder);
             return _iTotalPrice = _iTotalPrice + iPrice;
         }
 
 
-
+        public int fCallBackDelegate(int i, delFuncDow_Edge dFunction)
+        {
+            return dFunction(i);
+        }
 
         //ListBox에 보여주기
         private void flboxOrderText(string strOrderText)
