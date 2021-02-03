@@ -42,7 +42,7 @@ namespace Selfstudy_Winform3
             this.numEa = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.btnOrder = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lboxOrderList = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -186,23 +186,23 @@ namespace Selfstudy_Winform3
             this.btnOrder.TabIndex = 4;
             this.btnOrder.Text = "주문하기";
             this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
-            // groupBox4
+            // lboxOrderList
             // 
-            this.groupBox4.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.groupBox4.Location = new System.Drawing.Point(26, 371);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(344, 255);
-            this.groupBox4.TabIndex = 5;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "groupBox4";
+            this.lboxOrderList.FormattingEnabled = true;
+            this.lboxOrderList.ItemHeight = 15;
+            this.lboxOrderList.Location = new System.Drawing.Point(26, 379);
+            this.lboxOrderList.Name = "lboxOrderList";
+            this.lboxOrderList.Size = new System.Drawing.Size(344, 244);
+            this.lboxOrderList.TabIndex = 5;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(427, 650);
-            this.Controls.Add(this.groupBox4);
+            this.ClientSize = new System.Drawing.Size(397, 650);
+            this.Controls.Add(this.lboxOrderList);
             this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -235,7 +235,7 @@ namespace Selfstudy_Winform3
         private System.Windows.Forms.RadioButton rdoTopping2;
         private System.Windows.Forms.RadioButton rdoTopping1;
         private System.Windows.Forms.Button btnOrder;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.ListBox lboxOrderList;
     }
 }
 
