@@ -36,13 +36,13 @@ namespace Selfstudy_Winform3
             this.rdoEdge2 = new System.Windows.Forms.RadioButton();
             this.rdoEdge1 = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.rdoTopping2 = new System.Windows.Forms.RadioButton();
-            this.rdoTopping1 = new System.Windows.Forms.RadioButton();
-            this.rdoTopping3 = new System.Windows.Forms.RadioButton();
-            this.numEa = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
+            this.numEa = new System.Windows.Forms.NumericUpDown();
             this.btnOrder = new System.Windows.Forms.Button();
             this.lboxOrderList = new System.Windows.Forms.ListBox();
+            this.cboxTopping1 = new System.Windows.Forms.CheckBox();
+            this.cboxTopping2 = new System.Windows.Forms.CheckBox();
+            this.cboxTopping3 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -117,57 +117,17 @@ namespace Selfstudy_Winform3
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.cboxTopping3);
+            this.groupBox3.Controls.Add(this.cboxTopping2);
+            this.groupBox3.Controls.Add(this.cboxTopping1);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.numEa);
-            this.groupBox3.Controls.Add(this.rdoTopping3);
-            this.groupBox3.Controls.Add(this.rdoTopping2);
-            this.groupBox3.Controls.Add(this.rdoTopping1);
             this.groupBox3.Location = new System.Drawing.Point(26, 187);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(344, 132);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "토핑";
-            // 
-            // rdoTopping2
-            // 
-            this.rdoTopping2.AutoSize = true;
-            this.rdoTopping2.Location = new System.Drawing.Point(7, 59);
-            this.rdoTopping2.Name = "rdoTopping2";
-            this.rdoTopping2.Size = new System.Drawing.Size(138, 19);
-            this.rdoTopping2.TabIndex = 1;
-            this.rdoTopping2.TabStop = true;
-            this.rdoTopping2.Text = "감자(1ea 300원)";
-            this.rdoTopping2.UseVisualStyleBackColor = true;
-            // 
-            // rdoTopping1
-            // 
-            this.rdoTopping1.AutoSize = true;
-            this.rdoTopping1.Location = new System.Drawing.Point(7, 25);
-            this.rdoTopping1.Name = "rdoTopping1";
-            this.rdoTopping1.Size = new System.Drawing.Size(153, 19);
-            this.rdoTopping1.TabIndex = 0;
-            this.rdoTopping1.TabStop = true;
-            this.rdoTopping1.Text = "소세지(1ea 500원)";
-            this.rdoTopping1.UseVisualStyleBackColor = true;
-            // 
-            // rdoTopping3
-            // 
-            this.rdoTopping3.AutoSize = true;
-            this.rdoTopping3.Location = new System.Drawing.Point(7, 96);
-            this.rdoTopping3.Name = "rdoTopping3";
-            this.rdoTopping3.Size = new System.Drawing.Size(138, 19);
-            this.rdoTopping3.TabIndex = 2;
-            this.rdoTopping3.TabStop = true;
-            this.rdoTopping3.Text = "치즈(1ea 400원)";
-            this.rdoTopping3.UseVisualStyleBackColor = true;
-            // 
-            // numEa
-            // 
-            this.numEa.Location = new System.Drawing.Point(202, 90);
-            this.numEa.Name = "numEa";
-            this.numEa.Size = new System.Drawing.Size(70, 25);
-            this.numEa.TabIndex = 3;
             // 
             // label1
             // 
@@ -177,6 +137,13 @@ namespace Selfstudy_Winform3
             this.label1.Size = new System.Drawing.Size(37, 15);
             this.label1.TabIndex = 4;
             this.label1.Text = "(EA)";
+            // 
+            // numEa
+            // 
+            this.numEa.Location = new System.Drawing.Point(202, 90);
+            this.numEa.Name = "numEa";
+            this.numEa.Size = new System.Drawing.Size(70, 25);
+            this.numEa.TabIndex = 3;
             // 
             // btnOrder
             // 
@@ -196,6 +163,36 @@ namespace Selfstudy_Winform3
             this.lboxOrderList.Name = "lboxOrderList";
             this.lboxOrderList.Size = new System.Drawing.Size(344, 244);
             this.lboxOrderList.TabIndex = 5;
+            // 
+            // cboxTopping1
+            // 
+            this.cboxTopping1.AutoSize = true;
+            this.cboxTopping1.Location = new System.Drawing.Point(7, 25);
+            this.cboxTopping1.Name = "cboxTopping1";
+            this.cboxTopping1.Size = new System.Drawing.Size(154, 19);
+            this.cboxTopping1.TabIndex = 5;
+            this.cboxTopping1.Text = "소세지(1ea 500원)";
+            this.cboxTopping1.UseVisualStyleBackColor = true;
+            // 
+            // cboxTopping2
+            // 
+            this.cboxTopping2.AutoSize = true;
+            this.cboxTopping2.Location = new System.Drawing.Point(6, 60);
+            this.cboxTopping2.Name = "cboxTopping2";
+            this.cboxTopping2.Size = new System.Drawing.Size(139, 19);
+            this.cboxTopping2.TabIndex = 6;
+            this.cboxTopping2.Text = "치즈(1ea 400원)";
+            this.cboxTopping2.UseVisualStyleBackColor = true;
+            // 
+            // cboxTopping3
+            // 
+            this.cboxTopping3.AutoSize = true;
+            this.cboxTopping3.Location = new System.Drawing.Point(6, 96);
+            this.cboxTopping3.Name = "cboxTopping3";
+            this.cboxTopping3.Size = new System.Drawing.Size(139, 19);
+            this.cboxTopping3.TabIndex = 7;
+            this.cboxTopping3.Text = "감자(1ea 300원)";
+            this.cboxTopping3.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -231,11 +228,11 @@ namespace Selfstudy_Winform3
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown numEa;
-        private System.Windows.Forms.RadioButton rdoTopping3;
-        private System.Windows.Forms.RadioButton rdoTopping2;
-        private System.Windows.Forms.RadioButton rdoTopping1;
         private System.Windows.Forms.Button btnOrder;
         private System.Windows.Forms.ListBox lboxOrderList;
+        private System.Windows.Forms.CheckBox cboxTopping3;
+        private System.Windows.Forms.CheckBox cboxTopping2;
+        private System.Windows.Forms.CheckBox cboxTopping1;
     }
 }
 

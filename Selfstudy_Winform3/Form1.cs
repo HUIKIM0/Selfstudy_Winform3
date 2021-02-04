@@ -22,6 +22,8 @@ namespace Selfstudy_Winform3
             delFuncDow_Edge delDow = new delFuncDow_Edge(fDow);   //도우
             delFuncDow_Edge delEdge = new delFuncDow_Edge(fEdge);  //엣지
 
+            delFuncTopping delTopping = null;
+
             int iDowOrder = 0;
             int iEdgeOrder = 0;
 
@@ -33,6 +35,7 @@ namespace Selfstudy_Winform3
             {
                 iDowOrder = 2;
             }
+            //delDow(iDowOrder);
 
             if (rdoEdge1.Checked)
             {
@@ -42,15 +45,25 @@ namespace Selfstudy_Winform3
             {
                 iEdgeOrder = 2;
             }
-            else
-            {
-                iEdgeOrder = 3;
-            }
 
-            // int타입, delegate
-            // 도우 rdbtn 이랑 엣지 rdbtn
-            fCallBackDelegate(iDowOrder, fDow);
+            //delEdge(iEdgeOrder);
+
+            // fCallBackDelegate 함수에다가 int타입, delegate호출(함수호출이 아님)
+            // 도우랑 엣지.
+            fCallBackDelegate(iDowOrder, fDow); 
             fCallBackDelegate(iEdgeOrder, fEdge);
+
+
+            /* 토핑 선택 확인 */
+            if (cboxTopping1.Checked)
+            {
+                delTopping += fTopping1;   //delegate인 delTopping과 함수인 fTopping1 연결.  
+            }
+            if (cboxTopping2.Checked) delTopping += fTopping2;
+            if (cboxTopping3.Checked) delTopping += fTopping3;
+
+            delTopping("토핑", (int)numEa.Value);
+
 
             flboxOrderText("----------------------------------");
             flboxOrderText(string.Format("전체 주문가격은 {0}원 입니다", _iTotalPrice));
@@ -62,7 +75,7 @@ namespace Selfstudy_Winform3
         /* 도우
             비선택/오리지널 : 1번 (10000원)
             씬 :2번 (11000)원  */
-        private int fDow(int iOrder)
+        private int fDow(int iOrder)    //iOrder에 iDowOrder 1,2 해준거 들어감
         {
             string strOrder = string.Empty;
             int iPrice = 0; //도우 가격
@@ -78,7 +91,7 @@ namespace Selfstudy_Winform3
                 strOrder = string.Format("도우는 씬을 선택 하셨습니다. ({0}원)", iPrice);
             }
 
-            flboxOrderText(strOrder);   //주문한거 List에 찍혀야 하니까
+            flboxOrderText(strOrder);   //ListBox.Items.Add
             return _iTotalPrice = _iTotalPrice + iPrice;
         }
 
@@ -117,6 +130,48 @@ namespace Selfstudy_Winform3
         public int fCallBackDelegate(int i, delFuncDow_Edge dFunction)
         {
             return dFunction(i);
+        }
+
+
+        /* 토핑 
+           소시지 500원
+           치즈 400원 
+           감자 300원
+           몇개 추가하는지 (EA)도 봐야함 */
+        // 소세지
+        private int fTopping1(string Order, int iEa)
+        {
+            string strOrder = string.Empty;
+            int iPrice = 500 * iEa;    // 소세지 가격 * 개수
+
+            strOrder = string.Format("소세지 {0}개를 선택 하셨습니다. ({1}원 (1ea 500원)",iEa,iPrice);
+            flboxOrderText(strOrder);
+
+            return _iTotalPrice = _iTotalPrice + iPrice;
+        }
+
+        //치즈
+        private int fTopping2(string Order, int iEa)
+        {
+            string strOrder = string.Empty;
+            int iPrice = 400 * iEa;    // 치즈 가격 * 개수
+
+            strOrder = string.Format("치즈 {0}개를 선택 하셨습니다. ({1}원 (1ea 500원)", iEa, iPrice);
+            flboxOrderText(strOrder);
+
+            return _iTotalPrice = _iTotalPrice + iPrice;
+        }
+
+        //감자
+        private int fTopping3(string Order, int iEa)
+        {
+            string strOrder = string.Empty;
+            int iPrice = 500 * iEa;    // 소세지 가격 * 개수
+
+            strOrder = string.Format("소세지 {0}개를 선택 하셨습니다. ({1}원 (1ea 500원)", iEa, iPrice);
+            flboxOrderText(strOrder);
+
+            return _iTotalPrice = _iTotalPrice + iPrice;
         }
 
         //ListBox에 보여주기
