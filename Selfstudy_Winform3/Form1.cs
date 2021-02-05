@@ -45,6 +45,10 @@ namespace Selfstudy_Winform3
             {
                 iEdgeOrder = 2;
             }
+            else if (!rdoEdge1.Checked && !rdoEdge2.Checked)
+            {
+                iEdgeOrder = 3;
+            }
 
             //delEdge(iEdgeOrder);
 
@@ -61,12 +65,18 @@ namespace Selfstudy_Winform3
             }
             if (cboxTopping2.Checked) delTopping += fTopping2;
             if (cboxTopping3.Checked) delTopping += fTopping3;
+            if (!cboxTopping1.Checked && !cboxTopping2.Checked && !cboxTopping3.Checked)
+            {
+                delTopping = delTopping + fTopping4;
+            }
+
 
             delTopping("토핑", (int)numEa.Value);
 
 
             flboxOrderText("----------------------------------");
-            flboxOrderText(string.Format("전체 주문가격은 {0}원 입니다", _iTotalPrice));
+            flboxOrderText(string.Format("전체 주문가격은 {0}원 입니다.", _iTotalPrice));
+            flboxOrderText("\r\n");
 
         }
 
@@ -170,6 +180,16 @@ namespace Selfstudy_Winform3
 
             strOrder = string.Format("소세지 {0}개를 선택 하셨습니다. ({1}원 (1ea 500원)", iEa, iPrice);
             flboxOrderText(strOrder);
+
+            return _iTotalPrice = _iTotalPrice + iPrice;
+        }
+
+        private int fTopping4(string Order, int Ea)
+        {
+            string strOrder = string.Empty;
+            int iPrice = 0;
+            strOrder = string.Format("토핑을 선택하지 않으셨습니다. ({0}원)", iPrice);
+            lboxOrderList.Items.Add(strOrder);
 
             return _iTotalPrice = _iTotalPrice + iPrice;
         }
