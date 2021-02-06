@@ -8,3 +8,4 @@ D:\dev\C#Work\Selfstudy_Winform3\Selfstudy_Winform3\obj\Debug\Selfstudy_Winform3
 D:\dev\C#Work\Selfstudy_Winform3\Selfstudy_Winform3\obj\Debug\Selfstudy_Winform3.csproj.CoreCompileInputs.cache
 D:\dev\C#Work\Selfstudy_Winform3\Selfstudy_Winform3\obj\Debug\Selfstudy_Winform3.exe
 D:\dev\C#Work\Selfstudy_Winform3\Selfstudy_Winform3\obj\Debug\Selfstudy_Winform3.pdb
+D:\dev\C#Work\Selfstudy_Winform3\Selfstudy_Winform3\obj\Debug\Selfstudy_Winform3.frmPizza.resources

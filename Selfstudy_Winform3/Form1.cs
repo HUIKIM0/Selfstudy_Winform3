@@ -7,6 +7,7 @@ namespace Selfstudy_Winform3
     {
         public delegate int delFuncDow_Edge(int i);   //int 도우 or int 엣지
         public delegate int delFuncTopping(string strOrder, int Ea);  //string 토핑종류, int 토핑추가횟수
+
         public delegate object delFuncOrder(object i);  //var, object
 
         int _iTotalPrice = 0;
@@ -35,7 +36,7 @@ namespace Selfstudy_Winform3
             {
                 iDowOrder = 2;
             }
-            //delDow(iDowOrder);
+            delDow(iDowOrder);
 
             if (rdoEdge1.Checked)
             {
@@ -50,12 +51,12 @@ namespace Selfstudy_Winform3
                 iEdgeOrder = 3;
             }
 
-            //delEdge(iEdgeOrder);
+            delEdge(iEdgeOrder);
 
             // fCallBackDelegate 함수에다가 int타입, delegate호출(함수호출이 아님)
             // 도우랑 엣지.
-            fCallBackDelegate(iDowOrder, fDow); 
-            fCallBackDelegate(iEdgeOrder, fEdge);
+            //fCallBackDelegate(iDowOrder, fDow); 
+            //fCallBackDelegate(iEdgeOrder, fEdge);
 
 
             /* 토핑 선택 확인 */
@@ -188,7 +189,7 @@ namespace Selfstudy_Winform3
         {
             string strOrder = string.Empty;
             int iPrice = 0;
-            strOrder = string.Format("토핑을 선택하지 않으셨습니다. ({0}원)", iPrice);
+            strOrder = string.Format("토핑은 선택하지 않으셨습니다. ({0}원)", iPrice);
             lboxOrderList.Items.Add(strOrder);
 
             return _iTotalPrice = _iTotalPrice + iPrice;
