@@ -36,7 +36,7 @@ namespace Selfstudy_Winform3
             if (rdoDow1.Checked)
             {
                 iDowOrder = 1;
-                dPizzaOrder.Add("오리지널", 1);
+                dPizzaOrder.Add("오리지널", 1);  //사장님 오리지널 하나요^^
             }
             else if (rdoDow2.Checked)
             {
@@ -82,14 +82,14 @@ namespace Selfstudy_Winform3
             }
 
 
-            delTopping("토핑", (int)numEa.Value);
+            delTopping("토핑", (int)numEa.Value);   //string,int
 
 
             flboxOrderText("----------------------------------");
             flboxOrderText(string.Format("전체 주문가격은 {0}원 입니다.", _iTotalPrice));
             flboxOrderText("\r\n");
 
-            //주문하기 버튼 누르면 frmPizza.cs 작업 들어가게끔
+            //주문하기 버튼 누르면 frmPizza.cs 작업 들어가게끔 frmLoading 메서드에 딕셔너리 dPizzaOrder
             frmLoading(dPizzaOrder);
 
         }
@@ -219,6 +219,7 @@ namespace Selfstudy_Winform3
         frmPizza fPizza;
 
         //string 주문종류(key 중복X), int 개수(value)
+        // 폼 로딩시에, 딕셔너리에 넣어준 <주문종류,개수> 값을 넘겨준다 
         private void frmLoading(Dictionary<string,int> dPizzaOrder)
         {
             if(fPizza != null)
@@ -226,24 +227,30 @@ namespace Selfstudy_Winform3
                 fPizza.Dispose();
                 fPizza = null;
             }
+
             fPizza = new frmPizza();
-            //frmPizza에서 만들어준 delegate event
-            fPizza.eventdelPizzaComplete += FPizza_eventdelPizzaComplete;
+
+            //frmPizza.cs에서 만들어준 ★eventdelPizzaComplete (event) 화면에 뿌려주기전에 ★
+            // Pizza가 완성 되었습니다 하는 순간 부모Form으로 넘어옴
+            fPizza.eventdelPizzaComplete += FPizza_eventdelPizzaComplete;  
             fPizza.Show();
 
-            fPizza.fPizzaCheck(dPizzaOrder);
+            fPizza.fPizzaCheck(dPizzaOrder);   
+
         }
 
-        //event delegate. fPizza.eventdelPizzaComplete += 탭탭 해서 나온거
+        // event delegate. fPizza.eventdelPizzaComplete += 탭탭 해서 나온거
+        // ★ frmpizza에서 작업 다 하고 event를 이용 끝났다고 알려줬다
+        // int iRet = eventdelPizzaComplete("Pizza가 완성 되었습니다", iTotalTime); 
         private int FPizza_eventdelPizzaComplete(string strResult, int iTime)
         {
             flboxOrderText("----------------------------------");
-            flboxOrderText(string.Format("{0} / 걸린 시간 : {1}", strResult, iTime));
+            flboxOrderText(string.Format("{0} / 걸린 시간 : {1}", strResult, iTime));  // 피자가 완성되었습니다 / 걸린시간 
             flboxOrderText("\r\n");
 
 
             // 결과값을 자식 form인 frmPizza로 return해주기 위해 사용
-            // 시간 계산을 해서 해당 시간이 넘어가면 -1
+            // 시간 계산을 해서 해당 시간이 넘어가면 -1을 frmPizza.cs에 있는 iRet에 
             if (iTime > 10000)
             {
                 return -1;

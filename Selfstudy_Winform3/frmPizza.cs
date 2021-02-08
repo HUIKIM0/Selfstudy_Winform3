@@ -13,7 +13,7 @@ namespace Selfstudy_Winform3
 {
     public partial class frmPizza : Form
     {
-        public delegate int delPizzaComplete(string strResult, int iTime); //FPizza_eventdelPizzaComplete랑 연결됨
+        public delegate int delPizzaComplete(string strResult, int iTime); //form1.cs의 FPizza_eventdelPizzaComplete
         public event delPizzaComplete eventdelPizzaComplete;  //delegate event
 
         private bool orderComplete = false;  //피자 제작 완료되었는지
@@ -32,6 +32,7 @@ namespace Selfstudy_Winform3
 
         /* Pizza 주문 진행 상황을 표시 하기 위한 함수
            Dictionary 주문종류(string),개수(int)*/
+        // 2
         internal void fPizzaCheck(Dictionary<string,int> dPizzaOrder)
         {
             orderComplete = false;  //아직 다 안 만들었어요~
@@ -91,11 +92,13 @@ namespace Selfstudy_Winform3
                 Thread.Sleep(1000);
             }
 
-            int iRet = eventdelPizzaComplete("Pizza가 완성 되었습니다", iTotalTime);
+            // eventdelPizzaComplete("완료했으니 부모Form으로 가야지", iTotalTime);  
+            // Main Form으로 가서 끝났다고 event. return값 받아서 여기로 다시옴 iRet은 0 or -1
+            int iRet = eventdelPizzaComplete("Pizza가 완성 되었습니다", iTotalTime);   
             orderComplete = true;
 
-            lboxPizzaMake.Items.Add("--------------------");
 
+            lboxPizzaMake.Items.Add("--------------------");
             if(iRet == 0)
             {
                 lboxPizzaMake.Items.Add("주문 완료 확인!");
