@@ -16,5 +16,10 @@ namespace Selfstudy_Winform3
         {
             InitializeComponent();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

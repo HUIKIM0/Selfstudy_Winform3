@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Selfstudy_Winform3
@@ -20,6 +21,10 @@ namespace Selfstudy_Winform3
         /* 주문하기 버튼 */
         private void btnOrder_Click(object sender, EventArgs e)
         {
+
+            Dictionary<string, int> dPizzaOrder = new Dictionary<string, int>(); // Pizza 주문을 담을 그릇 (Key : 주문 종류, value : 개수)
+
+
             delFuncDow_Edge delDow = new delFuncDow_Edge(fDow);   //도우
             delFuncDow_Edge delEdge = new delFuncDow_Edge(fEdge);  //엣지
 
@@ -200,5 +205,48 @@ namespace Selfstudy_Winform3
         {
            lboxOrderList.Items.Add(strOrderText);
         }
+
+
+        //새로 만든 fmPizza.cs
+        frmPizza fPizza;
+
+        private void frmLoading(Dictionary<string,int> dPizzaOrder)
+        {
+            if(fPizza != null)
+            {
+                fPizza.Dispose();
+                fPizza = null;
+            }
+            fPizza = new frmPizza();
+            //frmPizza에서 만들어준 delegate event
+            fPizza.eventdelPizzaComplete += FPizza_eventdelPizzaComplete;
+            fPizza.Show();
+
+            fPizza.fPizzaCheck(dPizzaOrder);
+        }
+
+        //event delegate. fPizza.eventdelPizzaComplete += 탭탭 해서 나온거
+        private int FPizza_eventdelPizzaComplete(string strResult, int iTime)
+        {
+            flboxOrderText("----------------------------------");
+            flboxOrderText(string.Format("{0} / 걸린 시간 : {1}", strResult, iTime));
+            flboxOrderText("\r\n");
+
+
+            // 결과값을 자식 form인 frmPizza로 return해주기 위해 사용
+            // 시간 계산을 해서 5분이 넘어가면 -1
+            if (iTime > 4000)
+            {
+                return -1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+
+
+
     }
 }
