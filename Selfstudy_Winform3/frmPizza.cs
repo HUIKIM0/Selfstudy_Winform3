@@ -93,13 +93,13 @@ namespace Selfstudy_Winform3
             }
 
             // eventdelPizzaComplete("완료했으니 부모Form으로 가야지", iTotalTime);  
-            // Main Form으로 가서 끝났다고 event. return값 받아서 여기로 다시옴 iRet은 0 or -1
+            // ★ Main Form으로 가서 끝났다고 event. return값 받으면 여기로 다시옴!! 
             int iRet = eventdelPizzaComplete("Pizza가 완성 되었습니다", iTotalTime);   
             orderComplete = true;
 
 
             lboxPizzaMake.Items.Add("--------------------");
-            if(iRet == 0)
+            if (iRet == 0)
             {
                 lboxPizzaMake.Items.Add("주문 완료 확인!");
             }

@@ -1,0 +1,11 @@
+D:\dev\C#Work\Selfstudy_Winform3\Thread_study\bin\Debug\Thread_study.exe.config
+D:\dev\C#Work\Selfstudy_Winform3\Thread_study\bin\Debug\Thread_study.exe
+D:\dev\C#Work\Selfstudy_Winform3\Thread_study\bin\Debug\Thread_study.pdb
+D:\dev\C#Work\Selfstudy_Winform3\Thread_study\obj\Debug\Thread_study.csprojAssemblyReference.cache
+D:\dev\C#Work\Selfstudy_Winform3\Thread_study\obj\Debug\Thread_study.Form1.resources
+D:\dev\C#Work\Selfstudy_Winform3\Thread_study\obj\Debug\Thread_study.Play.resources
+D:\dev\C#Work\Selfstudy_Winform3\Thread_study\obj\Debug\Thread_study.Properties.Resources.resources
+D:\dev\C#Work\Selfstudy_Winform3\Thread_study\obj\Debug\Thread_study.csproj.GenerateResource.cache
+D:\dev\C#Work\Selfstudy_Winform3\Thread_study\obj\Debug\Thread_study.csproj.CoreCompileInputs.cache
+D:\dev\C#Work\Selfstudy_Winform3\Thread_study\obj\Debug\Thread_study.exe
+D:\dev\C#Work\Selfstudy_Winform3\Thread_study\obj\Debug\Thread_study.pdb

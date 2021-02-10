@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selfstudy_Winform3", "Selfstudy_Winform3\Selfstudy_Winform3.csproj", "{D906E4A6-EEA0-473B-8992-C9D030BA63FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thread_study", "Thread_study\Thread_study.csproj", "{DF0DA0BB-E089-409D-B0D6-AA10AB4D7262}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D906E4A6-EEA0-473B-8992-C9D030BA63FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D906E4A6-EEA0-473B-8992-C9D030BA63FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D906E4A6-EEA0-473B-8992-C9D030BA63FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF0DA0BB-E089-409D-B0D6-AA10AB4D7262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF0DA0BB-E089-409D-B0D6-AA10AB4D7262}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF0DA0BB-E089-409D-B0D6-AA10AB4D7262}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF0DA0BB-E089-409D-B0D6-AA10AB4D7262}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

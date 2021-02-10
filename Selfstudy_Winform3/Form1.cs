@@ -249,8 +249,9 @@ namespace Selfstudy_Winform3
             flboxOrderText("\r\n");
 
 
-            // 결과값을 자식 form인 frmPizza로 return해주기 위해 사용
-            // 시간 계산을 해서 해당 시간이 넘어가면 -1을 frmPizza.cs에 있는 iRet에 
+
+            //frmPizza.cs의 delegate event부분에 return
+            //시간 계산을 해서 해당 시간이 넘어가면 - 1을 frmPizza.cs에 있는 iRet에
             if (iTime > 10000)
             {
                 return -1;
