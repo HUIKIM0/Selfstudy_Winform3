@@ -22,7 +22,7 @@ namespace Thread_study
 
         Thread _thread = null;
 
-        bool _bthreadStop = false;   //Thread Stop을 위한 Flag 생성.
+        bool _bthreadStop = false;   // Thread Stop을 위한 Flag 생성. while문 벗어나서 정상종료 시켜볼려고
 
         public Play()
         {
@@ -52,7 +52,8 @@ namespace Thread_study
                 int ivar = 0;
                 Random rd = new Random();
 
-                while (pbarPlayer.Value < 100  && !_bthreadStop)   //100미만, true
+
+                while (pbarPlayer.Value < 100  && !_bthreadStop)  
                 {
                     // ★ 요청한 Thread가 현재 Main Thread에 있는 Control을 엑세스 할 수 있는지 확인
                     if (this.InvokeRequired)
@@ -82,11 +83,12 @@ namespace Thread_study
                     }
                 }
 
-                if (_bthreadStop)  
+                if (_bthreadStop)   //true
+                    
                 {
                     eventdelMessage(this, "중도 포기.. (Thread Stop)");
                 }
-                else
+                else    //false
                 {
                     eventdelMessage(this, "완주!! (Thread Complete)");  //Mian Form으로 끝났다고 form이랑 완주!! 넘겨줌 event
                 }
@@ -107,21 +109,23 @@ namespace Thread_study
 
 
         //Thread가 멈추는 타이밍을 찾지 않고 무조건 빠져나간다
+       
         public void ThreadAbort()
         {
             if (_thread.IsAlive)   //Thread가 동작 중 일 경우
             {
-                _thread.Abort();   // 강제 종료
+                _thread.Abort();   // 강제 종료.   // catch(Exception ex)
             }
 
         }
 
         //Thread가 돌다가 멈추는 타이밍을 찾아서 빠져나간다. 예외발생
+       
         public void ThreadInterrupt()
         {
             if (_thread.IsAlive)
             {
-                _thread.Interrupt();
+                _thread.Interrupt();     // catch(hreadInterruptedException exInterrupt)
             }
         }
 
@@ -137,6 +141,7 @@ namespace Thread_study
         }
 
 
+        // while로 가서 !_bthreadStop 하면 false가 됨. true && false -> while문 탈출
         private void btnStop_Click(object sender, EventArgs e)
         {
             //ThreadAbort();
