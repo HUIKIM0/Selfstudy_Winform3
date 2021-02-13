@@ -21,6 +21,9 @@ namespace Thread_study
             웬디,
         }
 
+        //열었던 Form들에 대해 다 가지고 있을 List
+        List<Play> lPlay = new List<Play>();
+
         int _locationX = 0;
         int _locationY = 0;
 
@@ -31,6 +34,16 @@ namespace Thread_study
             _locationX = this.Location.X;  
             _locationY = this.Location.Y;
         }
+
+        // Form1.Designer에서 생성해준 this.FormClosing
+        private void Form1_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+        {
+            foreach (Play Litem in lPlay)
+            {
+                Litem.ThreadAbort();  // 프로그램 종료직전인 Closing이라서 강제로 Thread해제
+            }
+        }
+
 
         private void btnStart_Click(object sender, EventArgs e)
         {
@@ -48,6 +61,8 @@ namespace Thread_study
                 py.Show();
 
                 py.fThreadStart();
+
+                lPlay.Add(py);  // Form을 List에 넣음
 
             }
         }

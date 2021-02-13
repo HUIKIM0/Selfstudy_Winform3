@@ -52,6 +52,7 @@ namespace Thread_study
             this.btnStop.TabIndex = 1;
             this.btnStop.Text = "포기";
             this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // lblProcess
             // 
