@@ -29,24 +29,24 @@ namespace UserControl_reward
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pMain = new System.Windows.Forms.Panel();
             this.lboxList = new System.Windows.Forms.ListBox();
             this.ucInfo3 = new UserControl_reward.UCInfo();
             this.ucInfo2 = new UserControl_reward.UCInfo();
             this.ucInfo1 = new UserControl_reward.UCInfo();
-            this.panel1.SuspendLayout();
+            this.pMain.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // pMain
             // 
-            this.panel1.BackColor = System.Drawing.Color.Moccasin;
-            this.panel1.Controls.Add(this.ucInfo3);
-            this.panel1.Controls.Add(this.ucInfo2);
-            this.panel1.Controls.Add(this.ucInfo1);
-            this.panel1.Location = new System.Drawing.Point(13, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(889, 374);
-            this.panel1.TabIndex = 0;
+            this.pMain.BackColor = System.Drawing.Color.Moccasin;
+            this.pMain.Controls.Add(this.ucInfo3);
+            this.pMain.Controls.Add(this.ucInfo2);
+            this.pMain.Controls.Add(this.ucInfo1);
+            this.pMain.Location = new System.Drawing.Point(13, 12);
+            this.pMain.Name = "pMain";
+            this.pMain.Size = new System.Drawing.Size(889, 374);
+            this.pMain.TabIndex = 0;
             // 
             // lboxList
             // 
@@ -66,7 +66,7 @@ namespace UserControl_reward
             this.ucInfo3.TabIndex = 2;
             this.ucInfo3.UserFace = global::UserControl_reward.Properties.Resources._13;
             this.ucInfo3.UserMoney = "2800만원";
-            this.ucInfo3.UserName = "이수박";
+            this.ucInfo3.UserName = "이박수";
             this.ucInfo3.UserNo = "3";
             // 
             // ucInfo2
@@ -99,17 +99,18 @@ namespace UserControl_reward
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(916, 615);
             this.Controls.Add(this.lboxList);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pMain);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.panel1.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.pMain.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pMain;
         private UCInfo ucInfo3;
         private UCInfo ucInfo2;
         private UCInfo ucInfo1;

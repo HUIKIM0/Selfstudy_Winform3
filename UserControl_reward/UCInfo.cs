@@ -87,20 +87,20 @@ namespace UserControl_reward
 
             string strText = string.Empty;
 
-            switch (oBtn.Text)
+            switch (oBtn.Name)
             {
                 case "btnReg":
                     this.BackColor = Color.Red;
                     //eventDELEVENTsender(this, string.Format("{0}은 지금 {1}금액으로 수배중 입니다. 제보전화 112", lblName.Text,lblMoney.Text);
-                    strText = string.Format("{0}은 지금 {1}금액으로 수배중 입니다. 제보전화 112", lblName.Text,lblMoney.Text);
+                    strText = string.Format("{0}는 지금 {1} 금액으로 수배중 입니다. 제보전화 112", lblName.Text,lblMoney.Text);
                     break;
                 case"btnStop":
                     this.BackColor = Color.Yellow;
-                    strText = string.Format("{0}은 지금 수배중지 상태 입니다.", lblName.Text);
+                    strText = string.Format("{0}는 지금 수배중지 상태 입니다.", lblName.Text);
                     break;
                 case"btnCatch":
                     this.BackColor = Color.Blue;
-                    strText = string.Format("{0}은 검거완료 되었습니다.", lblName.Text);
+                    strText = string.Format("{0}는 검거완료 되었습니다.", lblName.Text);
                     break;
                 default:
                     break;
