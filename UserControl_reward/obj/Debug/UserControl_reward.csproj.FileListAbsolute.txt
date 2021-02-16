@@ -1,0 +1,11 @@
+D:\dev\C#Work\Selfstudy_Winform3\UserControl_reward\bin\Debug\UserControl_reward.exe.config
+D:\dev\C#Work\Selfstudy_Winform3\UserControl_reward\bin\Debug\UserControl_reward.exe
+D:\dev\C#Work\Selfstudy_Winform3\UserControl_reward\bin\Debug\UserControl_reward.pdb
+D:\dev\C#Work\Selfstudy_Winform3\UserControl_reward\obj\Debug\UserControl_reward.Properties.Resources.resources
+D:\dev\C#Work\Selfstudy_Winform3\UserControl_reward\obj\Debug\UserControl_reward.UCInfo.resources
+D:\dev\C#Work\Selfstudy_Winform3\UserControl_reward\obj\Debug\UserControl_reward.csproj.GenerateResource.cache
+D:\dev\C#Work\Selfstudy_Winform3\UserControl_reward\obj\Debug\UserControl_reward.csproj.CoreCompileInputs.cache
+D:\dev\C#Work\Selfstudy_Winform3\UserControl_reward\obj\Debug\UserControl_reward.exe
+D:\dev\C#Work\Selfstudy_Winform3\UserControl_reward\obj\Debug\UserControl_reward.pdb
+D:\dev\C#Work\Selfstudy_Winform3\UserControl_reward\obj\Debug\UserControl_reward.Form1.resources
+D:\dev\C#Work\Selfstudy_Winform3\UserControl_reward\obj\Debug\UserControl_reward.csprojAssemblyReference.cache
