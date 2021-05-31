@@ -25,7 +25,7 @@ namespace Selfstudy_Winform3
             Dictionary<string, int> dPizzaOrder = new Dictionary<string, int>(); // Pizza 주문을 담을 그릇 (Key : 주문 종류, value : 개수)
 
 
-            delFuncDow_Edge delDow = new delFuncDow_Edge(fDow);   //도우
+            delFuncDow_Edge delDow = new delFuncDow_Edge(fDow);   //delegate(delFuncDow_Edge)와 함수(fDow) 연결. 도우
             delFuncDow_Edge delEdge = new delFuncDow_Edge(fEdge);  //엣지
 
             delFuncTopping delTopping = null;
@@ -71,6 +71,7 @@ namespace Selfstudy_Winform3
             /* 토핑 선택 확인 */
             if (cboxTopping1.Checked)
             {
+                //delTopping = new delFuncTopping(fTopping1);
                 delTopping += fTopping1;   //delegate인 delTopping과 함수인 fTopping1 연결.  
                 dPizzaOrder.Add("소세지", (int)numEa.Value);
             }
