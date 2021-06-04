@@ -6,6 +6,8 @@ namespace Selfstudy_Winform3
 {
     public partial class Form1 : Form
     {
+        // 함수 먼저 만들고 delegate만들어야 편함
+
         public delegate int delFuncDow_Edge(int i);   //int 도우 or int 엣지
         public delegate int delFuncTopping(string strOrder, int Ea);  //string 토핑종류, int 토핑추가횟수
 
@@ -18,17 +20,16 @@ namespace Selfstudy_Winform3
             InitializeComponent();
         }
 
-        /* 주문하기 버튼 */
+        /* ★주문하기 버튼★ */
         private void btnOrder_Click(object sender, EventArgs e)
         {
 
-            Dictionary<string, int> dPizzaOrder = new Dictionary<string, int>(); // Pizza 주문을 담을 그릇 (Key : 주문 종류, value : 개수)
+            Dictionary<string, int> dPizzaOrder = new Dictionary<string, int>(); // ★ Pizza 주문을 담을 그릇 (Key : 주문 종류, value : 개수)
 
 
-            delFuncDow_Edge delDow = new delFuncDow_Edge(fDow);   //delegate(delFuncDow_Edge)와 함수(fDow) 연결. 도우
-            delFuncDow_Edge delEdge = new delFuncDow_Edge(fEdge);  //엣지
+            delFuncDow_Edge delDow = new delFuncDow_Edge(fDow);   // int 도우  함수 fDow와 연결
+            delFuncDow_Edge delEdge = new delFuncDow_Edge(fEdge);  // int 엣지  함수 fEdge와 연결
 
-            delFuncTopping delTopping = null;
 
             int iDowOrder = 0;
             int iEdgeOrder = 0;
@@ -60,29 +61,47 @@ namespace Selfstudy_Winform3
                 iEdgeOrder = 3;
             }
 
-            //delEdge(iEdgeOrder);
 
-            // fCallBackDelegate 함수에다가 int타입, delegate호출(함수호출이 아님)
+
+            // fCallBackDelegate 함수에다가 int타입, delegate호출(함수호출이 아님 함수대리자 delegate)
+            // ★ delegate랑 연결한 함수 fDow와 fEdge에 iDowOrder값 넘겨주고, iEdgeOrder값 넘겨줌! delegate이용해서!! ★
+            // fDow(iDowOrder)
+            // fEdge(iEdgeOrder)  랑 같은맥락
             // 도우랑 엣지.
-            fCallBackDelegate(iDowOrder, fDow);
-            fCallBackDelegate(iEdgeOrder, fEdge);
+            fCallBackDelegate(iDowOrder, fDow);        //delDow(iDowOrder);
+            fCallBackDelegate(iEdgeOrder, fEdge);      //delEdge(iEdgeOrder);
 
+
+
+            delFuncTopping delTopping = null;      //토핑종류(string), 추가횟수(int)
 
             /* 토핑 선택 확인 */
             if (cboxTopping1.Checked)
             {
-                //delTopping = new delFuncTopping(fTopping1);
-                delTopping += fTopping1;   //delegate인 delTopping과 함수인 fTopping1 연결.  
-                dPizzaOrder.Add("소세지", (int)numEa.Value);
+                delTopping = new delFuncTopping(fTopping1);           // ★ delegate인 delTopping과 함수인 fTopping1 연결
+
+
+                dPizzaOrder.Add("소세지", (int)numEa.Value);       
             }
-            if (cboxTopping2.Checked) delTopping += fTopping2; dPizzaOrder.Add("치즈", (int)numEa.Value);
-            if (cboxTopping3.Checked) delTopping += fTopping3; dPizzaOrder.Add("감자", (int)numEa.Value);
-            if (!cboxTopping1.Checked && !cboxTopping2.Checked && !cboxTopping3.Checked)
+
+            if (cboxTopping2.Checked)
+            {
+                delTopping += fTopping2;
+                dPizzaOrder.Add("감자", (int)numEa.Value);
+            }
+
+            if (cboxTopping3.Checked)
+            {
+                delTopping += fTopping3;
+                dPizzaOrder.Add("치즈", (int)numEa.Value);
+            }
+
+            if(!cboxTopping1.Checked && !cboxTopping2.Checked && !cboxTopping3.Checked)
             {
                 delTopping = delTopping + fTopping4;
             }
 
-
+            // ★ delegate인 delTopping
             delTopping("토핑", (int)numEa.Value);   //string,int
 
 
@@ -90,8 +109,10 @@ namespace Selfstudy_Winform3
             flboxOrderText(string.Format("전체 주문가격은 {0}원 입니다.", _iTotalPrice));
             flboxOrderText("\r\n");
 
-            //주문하기 버튼 누르면 frmPizza.cs 작업 들어가게끔 frmLoading 메서드에 딕셔너리 dPizzaOrder
-            frmLoading(dPizzaOrder);
+
+
+            //주문하기 버튼 누르면 frmPizza.cs 작업 들어가게끔 frmLoading 메서드에 딕셔너리 dPizzaOrder(모든값 다 가지고있음)
+            frmLoading(dPizzaOrder);          
 
         }
 
@@ -169,7 +190,7 @@ namespace Selfstudy_Winform3
             string strOrder = string.Empty;
             int iPrice = 500 * iEa;    // 소세지 가격 * 개수
 
-            strOrder = string.Format("소세지 {0}개를 선택 하셨습니다. ({1}원 (1ea 500원)",iEa,iPrice);
+            strOrder = string.Format("소세지 {0} {1}개를 선택 하셨습니다. ({2}원 (1ea 500원)",Order,iEa,iPrice);
             flboxOrderText(strOrder);
 
             return _iTotalPrice = _iTotalPrice + iPrice;
@@ -181,7 +202,7 @@ namespace Selfstudy_Winform3
             string strOrder = string.Empty;
             int iPrice = 400 * iEa;    // 치즈 가격 * 개수
 
-            strOrder = string.Format("치즈 {0}개를 선택 하셨습니다. ({1}원 (1ea 500원)", iEa, iPrice);
+            strOrder = string.Format("치즈 {0} {1}개를 선택 하셨습니다. ({2}원 (1ea 500원)", Order, iEa, iPrice);
             flboxOrderText(strOrder);
 
             return _iTotalPrice = _iTotalPrice + iPrice;
@@ -191,9 +212,9 @@ namespace Selfstudy_Winform3
         private int fTopping3(string Order, int iEa)
         {
             string strOrder = string.Empty;
-            int iPrice = 500 * iEa;    // 소세지 가격 * 개수
+            int iPrice = 300 * iEa;    // 소세지 가격 * 개수
 
-            strOrder = string.Format("소세지 {0}개를 선택 하셨습니다. ({1}원 (1ea 500원)", iEa, iPrice);
+            strOrder = string.Format("감자 {0} {1}개를 선택 하셨습니다. ({2}원 (1ea 500원)", Order, iEa, iPrice);
             flboxOrderText(strOrder);
 
             return _iTotalPrice = _iTotalPrice + iPrice;
@@ -216,33 +237,34 @@ namespace Selfstudy_Winform3
         }
 
 
-        /* 새로 만든 fmPizza.cs */
+        /* 새로 만든 fmPizza.cs 선언 */
         frmPizza fPizza;
 
-        //string 주문종류(key 중복X), int 개수(value)
-        // 폼 로딩시에, 딕셔너리에 넣어준 <주문종류,개수> 값을 넘겨준다 
+        // string 주문종류(key 중복X), int 개수(value)
+        // sub 폼 로딩시에, 딕셔너리에 넣어준 <주문종류,개수> 값을 넘겨준다 
         private void frmLoading(Dictionary<string,int> dPizzaOrder)
         {
-            if(fPizza != null)
+            if(fPizza != null)      //fPizza form이 이미 띄워져있으면
             {
-                fPizza.Dispose();
+                fPizza.Dispose();    //삭제하기
                 fPizza = null;
             }
 
-            fPizza = new frmPizza();
+            fPizza = new frmPizza();     //fPizza form 띄우기!
 
             //frmPizza.cs에서 만들어준 ★eventdelPizzaComplete (event) 화면에 뿌려주기전에 ★
             // Pizza가 완성 되었습니다 하는 순간 부모Form으로 넘어옴
             fPizza.eventdelPizzaComplete += FPizza_eventdelPizzaComplete;  
             fPizza.Show();
 
-            fPizza.fPizzaCheck(dPizzaOrder);   
+            fPizza.fPizzaCheck(dPizzaOrder);   // frmPizza.cs에 값 들고 event 일으킬려고 frmPizza.cs 넘어간다
 
         }
 
-        // event delegate. fPizza.eventdelPizzaComplete += 탭탭 해서 나온거
+        // event delegate. 위의 fPizza.eventdelPizzaComplete += 탭탭 해서 나온거
         // ★ frmpizza에서 작업 다 하고 event를 이용 끝났다고 알려줬다
         // int iRet = eventdelPizzaComplete("Pizza가 완성 되었습니다", iTotalTime); 
+        // ★ 부모 class에 Event다 끝났으니까 알려줄려고 다시 온것! 끝났어요~~
         private int FPizza_eventdelPizzaComplete(string strResult, int iTime)
         {
             flboxOrderText("----------------------------------");
