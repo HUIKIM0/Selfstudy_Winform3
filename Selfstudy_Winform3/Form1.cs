@@ -60,7 +60,7 @@ namespace Selfstudy_Winform3
             {
                 iEdgeOrder = 3;
             }
-
+            //delEdge(iEdgeOrder);
 
 
             // fCallBackDelegate 함수에다가 int타입, delegate호출(함수호출이 아님 함수대리자 delegate)
