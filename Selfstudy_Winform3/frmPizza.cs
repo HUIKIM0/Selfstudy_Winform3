@@ -13,11 +13,11 @@ namespace Selfstudy_Winform3
 {
     public partial class frmPizza : Form
     {
-        public delegate int delPizzaComplete(string strResult, int iTime); //form1.cs의 FPizza_eventdelPizzaComplete
+        public delegate int delPizzaComplete(string strResult, int iTime); //form1.cs의 int FPizza_eventdelPizzaComplete
         public event delPizzaComplete eventdelPizzaComplete;  //delegate event
 
         private bool orderComplete = false;  //피자 제작 완료되었는지
-        //캡슐화
+        // ↑캡슐화 
         public bool OrderComplete { get => orderComplete; set => orderComplete = value; }
 
         public frmPizza()
@@ -92,8 +92,9 @@ namespace Selfstudy_Winform3
                 Thread.Sleep(1000);
             }
 
-            // eventdelPizzaComplete("완료했으니 부모Form으로 가야지", iTotalTime);  
+            // FPizza_eventdelPizzaComplete("완료했으니 부모Form으로 가야지", iTotalTime);  
             // ★ Main Form으로 가서 끝났다고 event. return값 받으면 여기로 다시옴!! 
+            //★ int FPizza_eventdelPizzaComplete가 int 타입이므로 return해줄때 int로~~
             int iRet = eventdelPizzaComplete("Pizza가 완성 되었습니다", iTotalTime);   
             orderComplete = true;
 

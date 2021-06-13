@@ -14,15 +14,15 @@ namespace Thread_study
     {
         private enum enumPlayer
         {
-            아이린,
-            조이,
+            아이린,      //0
+            조이,        
             예리,
             슬기,
             웬디,
         }
 
         //열었던 Form들에 대해 다 가지고 있을 List
-        List<Play> lPlay = new List<Play>();
+        List<Play> lPlay = new List<Play>();        //Play.cs
 
         int _locationX = 0;
         int _locationY = 0;
@@ -36,7 +36,7 @@ namespace Thread_study
         }
 
         // Form1.Designer에서 생성해준 this.FormClosing
-        private void Form1_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+        private void Form1_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)  //폼닫기(오른쪽상단X)
         {
             foreach (Play Litem in lPlay)
             {
@@ -52,7 +52,7 @@ namespace Thread_study
             _locationY = this.Location.Y;
 
             //Y좌표는 플레이어가 추가 될 때 마다 이전 창과 겹치지 않게 좌표값이 증가되어야함
-            for (int i = 0; i < numPlayerCount.Value; i++)
+            for (int i = 0; i < numPlayerCount.Value; i++)       
             {
                 Play py = new Play(((enumPlayer)i).ToString());
                 py.Location = new Point(_locationX, _locationY + py.Height * i);   //play form의 x좌표, y좌표

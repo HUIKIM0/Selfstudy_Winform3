@@ -17,6 +17,8 @@ namespace UserControl_reward
         public event delEvent eventDELEVENTsender;  
 
 
+        /* 아래와 같이 UseFace / UseNo / UserName 등등.. 만들어줘야 Mian에서 UserControl사용할때 속성부분에 생김*/
+
         // 이미지
         [Category("UserProperty"), Description("Image")]
         public Image UserFace  //속성
