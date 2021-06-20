@@ -42,13 +42,12 @@ namespace UserControl_reward
             return 0;
         }
 
-
         //private int UcInfo1_eventDELEVENTsender(object sender, string strText)
         //{
-            //lboxList.Items.Add(string.Format("{0}) {1}", UCInfo.UserNo, strText));
+        //lboxList.Items.Add(string.Format("{0}) {1}", UCInfo.UserNo, strText));
         //    return 0;
         //}
 
-
     }
+
 }
