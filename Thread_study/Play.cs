@@ -17,7 +17,7 @@ namespace Thread_study
         public event delMessage eventdelMessage;
 
 
-        string _strPlayerName = string.Empty;   //유저이름
+        string _strPlayerName = string.Empty;   //유저이름. 캡슐화 안하고 걍 여기에 public 해도 되지만 캡슐화가 좋대..
         public string StrPlayerName { get => _strPlayerName; set => _strPlayerName = value; }  //캡슐화
 
         Thread _thread = null;
@@ -52,7 +52,8 @@ namespace Thread_study
                 int ivar = 0;
                 Random rd = new Random();
 
-
+                
+                //while 조건이 True일때 진행 (True && True)
                 while (pbarPlayer.Value < 100  && !_bthreadStop)  
                 {
                     // ★ 요청한 Thread가 현재 Main Thread에 있는 Control을 엑세스 할 수 있는지 확인
@@ -141,13 +142,14 @@ namespace Thread_study
         }
 
 
-        // while로 가서 !_bthreadStop 하면 false가 됨. true && false -> while문 탈출
+        // while로 가서 !_bthreadStop 하면 false가 됨. true && false -> while문 탈출. 
         private void btnStop_Click(object sender, EventArgs e)
         {
-            //ThreadAbort();
+            //ThreadAbort();   
+
             if (_thread.IsAlive)
             {
-                _bthreadStop = true;
+                _bthreadStop = true;    
             }
 
         }

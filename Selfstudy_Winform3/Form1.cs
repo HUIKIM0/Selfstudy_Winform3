@@ -7,6 +7,7 @@ namespace Selfstudy_Winform3
     public partial class Form1 : Form
     {
         // 함수 먼저 만들고 delegate만들어야 편함
+        // 반환값을 void아닌 int로 해줘서 각 함수 계산값 return 받을거임 _iTotalPrice(전역)에 넣게
 
         public delegate int delFuncDow_Edge(int i);   //int 도우 or int 엣지
         public delegate int delFuncTopping(string strOrder, int Ea);  //string 토핑종류, int 토핑추가횟수
@@ -44,7 +45,7 @@ namespace Selfstudy_Winform3
                 iDowOrder = 2;
                 dPizzaOrder.Add("씬", 1);
             }
-            //delDow(iDowOrder);
+            //delDow(iDowOrder);    return _iTotalPirce
 
             if (rdoEdge1.Checked)
             {
@@ -56,18 +57,14 @@ namespace Selfstudy_Winform3
                 iEdgeOrder = 2;
                 dPizzaOrder.Add("치즈크러스트", 1);
             }
-            else if (!rdoEdge1.Checked && !rdoEdge2.Checked)
-            {
-                iEdgeOrder = 3;
-            }
-            //delEdge(iEdgeOrder);
+
+            //delEdge(iEdgeOrder);   return _iTotalPrice
 
 
             // fCallBackDelegate 함수에다가 int타입, delegate호출(함수호출이 아님 함수대리자 delegate)
             // ★ delegate랑 연결한 함수 fDow와 fEdge에 iDowOrder값 넘겨주고, iEdgeOrder값 넘겨줌! delegate이용해서!! ★
             // fDow(iDowOrder)
             // fEdge(iEdgeOrder)  랑 같은맥락
-            // 도우랑 엣지.
             fCallBackDelegate(iDowOrder, fDow);        //delDow(iDowOrder);
             fCallBackDelegate(iEdgeOrder, fEdge);      //delEdge(iEdgeOrder);
 
@@ -111,7 +108,7 @@ namespace Selfstudy_Winform3
 
 
 
-            //주문하기 버튼 누르면 frmPizza.cs 작업 들어가게끔 frmLoading 메서드에 딕셔너리 dPizzaOrder(모든값 다 가지고있음)
+            //주문하기 버튼 누르면 frmPizza.cs 폼 작업!! frmLoading에 매개변수를 딕셔너리로 dPizzaOrder(모든값 다 가지고있음)
             frmLoading(dPizzaOrder);          
 
         }
@@ -183,7 +180,11 @@ namespace Selfstudy_Winform3
            소시지 500원
            치즈 400원 
            감자 300원
-           몇개 추가하는지 (EA)도 봐야함 */
+           몇개 추가하는지 (EA)도 봐야함
+
+           텔리게이트 체인 해줘서 fTopping1~3의 매개변수 Order , iEa는 다 같음
+        */
+
         // 소세지
         private int fTopping1(string Order, int iEa)
         {
@@ -240,31 +241,32 @@ namespace Selfstudy_Winform3
         /* 새로 만든 fmPizza.cs 선언 */
         frmPizza fPizza;
 
-        // string 주문종류(key 중복X), int 개수(value)
-        // sub 폼 로딩시에, 딕셔너리에 넣어준 <주문종류,개수> 값을 넘겨준다 
+        // Dictionary<string 주문종류(key 중복X), int 개수(value)>
+        // 함수 매개변수로 받은 Dictionary에 사용자가 고른 항목에 대한 모든게 들어가있음
         private void frmLoading(Dictionary<string,int> dPizzaOrder)
         {
-            if(fPizza != null)      //fPizza form이 이미 띄워져있으면
+
+            if(fPizza != null)      //fPizza form이 이미 띄워져있으면(이거 때문에 위에서 전역으로 
             {
                 fPizza.Dispose();    //삭제하기
                 fPizza = null;
             }
 
-            fPizza = new frmPizza();     //fPizza form 띄우기!
 
-            //frmPizza.cs에서 만들어준 ★eventdelPizzaComplete (event) 화면에 뿌려주기전에 ★
-            // Pizza가 완성 되었습니다 하는 순간 부모Form으로 넘어옴
+            fPizza = new frmPizza();     //클래스 인스턴스 생성. ()파라미터에 값 없음 .기본생성자
+
+            //frmPizza.cs에서 만들어준 delegate event와 연결
             fPizza.eventdelPizzaComplete += FPizza_eventdelPizzaComplete;  
-            fPizza.Show();
+            fPizza.Show();  //폼 띄우기
 
-            fPizza.fPizzaCheck(dPizzaOrder);   // frmPizza.cs에 값 들고 event 일으킬려고 frmPizza.cs 넘어간다
+            fPizza.fPizzaCheck(dPizzaOrder);  //fPizzaCheck 함수에 Dictionary 값 넘겨줌
 
         }
 
         // event delegate. 위의 fPizza.eventdelPizzaComplete += 탭탭 해서 나온거
-        // ★ frmpizza에서 작업 다 하고 event를 이용 끝났다고 알려줬다
+        // ★ frmPiaaza.cs에 있는 delegate와 반환타입, 매개변수가 같다!! delegate에 영향받음
         // int iRet = eventdelPizzaComplete("Pizza가 완성 되었습니다", iTotalTime); 
-        // ★ 부모 class에 Event다 끝났으니까 알려줄려고 다시 온것! 끝났어요~~
+        // ★ 자식form에서 event로 넘겨주면 이쪽에서 받아줌!!
         private int FPizza_eventdelPizzaComplete(string strResult, int iTime)
         {
             flboxOrderText("----------------------------------");
@@ -273,8 +275,8 @@ namespace Selfstudy_Winform3
 
 
 
-            //frmPizza.cs의 delegate event부분에 return
-            //시간 계산을 해서 해당 시간이 넘어가면 - 1을 frmPizza.cs에 있는 iRet에
+            //frmPizza.cs의 int iRet = eventdelPizzaComplete(string, int) iRet에 return값 준다
+            //시간 계산을 해서 해당 시간이 넘어가면 - 1을 아니면 0을 return해서 iRet에 준다
             if (iTime > 10000)
             {
                 return -1;

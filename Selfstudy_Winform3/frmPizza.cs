@@ -13,14 +13,16 @@ namespace Selfstudy_Winform3
 {
     public partial class frmPizza : Form
     {
-        public delegate int delPizzaComplete(string strResult, int iTime); //form1.cs의 int FPizza_eventdelPizzaComplete
+
+
+        public delegate int delPizzaComplete(string strResult, int iTime); // main에 넘겨주고픈 값 담을 delegate 생성
         public event delPizzaComplete eventdelPizzaComplete;  //delegate event
 
         private bool orderComplete = false;  //피자 제작 완료되었는지
         // ↑캡슐화 
         public bool OrderComplete { get => orderComplete; set => orderComplete = value; }
 
-        public frmPizza()
+        public frmPizza()    //기본 생성자
         {
             InitializeComponent();
         }
@@ -30,16 +32,18 @@ namespace Selfstudy_Winform3
             Close();
         }
 
-        /* Pizza 주문 진행 상황을 표시 하기 위한 함수
-           Dictionary 주문종류(string),개수(int)*/
-        // 2
+        /*
+         * Main에서 받은 Dictionary(모든 주문 정보 있음)로 계산하는 함수
+         * event 를 써준다고 해서 delegate랑 반환타입, 매개변수 맞출 필요 전혀 없음!!!!! 함수를 넘기는게 아니니까
+         */
+
         internal void fPizzaCheck(Dictionary<string,int> dPizzaOrder)
         {
             orderComplete = false;  //아직 다 안 만들었어요~
 
             int iTotalTime = 0;  //총 소요시간
 
-            //키랑 벨류를 같이 빼옴
+            //키 - 벨류 세트 하나씩 빼옴 ex) 오리지널, 1 / 치즈크러스트 , 1 / 감자 , 2
             foreach (KeyValuePair<string,int> oOrder in dPizzaOrder)
             {
                 int iNowTime = 0;
@@ -84,27 +88,31 @@ namespace Selfstudy_Winform3
                     default:
                         break;
                 }
-                iTime = iNowTime * iCount;   //제작에 걸리는 시간 * 개수
+                iTime = iNowTime * iCount;   //고른 항목 제작에 걸리는 시간 * 개수
                 iTotalTime = iTotalTime + iTime;    //총 소요된 시간 
                 lboxPizzaMake.Items.Add(string.Format("{0}) {1} : {2}초 ({3}초, {4}개)", strType, oOrder.Key, iTime, iNowTime, iCount));
 
                 Refresh();
-                Thread.Sleep(1000);
+                Thread.Sleep(1000);  //1초마다 멈춤
             }
 
             // FPizza_eventdelPizzaComplete("완료했으니 부모Form으로 가야지", iTotalTime);  
-            // ★ Main Form으로 가서 끝났다고 event. return값 받으면 여기로 다시옴!! 
-            //★ int FPizza_eventdelPizzaComplete가 int 타입이므로 return해줄때 int로~~
+            // ★ Main Form으로 가서 끝났다고 event. 
+            //★  public delegate int delPizzaComplete 가 반환값이 int 이므로 int iRet으로 보내고,
+            // ★ 탭탭해서 만들어준 Main함수또한 int(delegate영향)임!! 그쪽에서 return하면 iRet으로 옴
             int iRet = eventdelPizzaComplete("Pizza가 완성 되었습니다", iTotalTime);   
+
+            //eventdelPizzaComplete("Pizza가 완성 되었습니다", iTotalTime); <- delegate가 void였으면 이랬을것
+
             orderComplete = true;
 
 
             lboxPizzaMake.Items.Add("--------------------");
-            if (iRet == 0)
+            if (iRet == 0)     //Main에서 return으로 받은거. delegate가 void였으면 return으로 이런거 못함. Main도 void이니까
             {
                 lboxPizzaMake.Items.Add("주문 완료 확인!");
             }
-            else  //return -1을 받음
+            else
             {
                 lboxPizzaMake.Items.Add("늦어졌어요! 빨리 배송해야 합니다!");
             }
