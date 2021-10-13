@@ -83,7 +83,7 @@ namespace Selfstudy_Winform3
 
             if (cboxTopping2.Checked)
             {
-                delTopping += fTopping2;
+                delTopping += fTopping2;                           
                 dPizzaOrder.Add("감자", (int)numEa.Value);
             }
 
@@ -99,7 +99,7 @@ namespace Selfstudy_Winform3
             }
 
             // ★ delegate인 delTopping
-            delTopping("토핑", (int)numEa.Value);   //string,int
+            int Result = delTopping("토핑", (int)numEa.Value);   //string,int
 
 
             flboxOrderText("----------------------------------");
@@ -121,16 +121,19 @@ namespace Selfstudy_Winform3
         private int fDow(int iOrder)    //iOrder에 iDowOrder 1,2 해준거 들어감
         {
             string strOrder = string.Empty;
+            string strEnder = "\n";
             int iPrice = 0; //도우 가격
 
             if (iOrder == 1)
             {
                 iPrice = 10000;
+                lboxOrderList.Items.Add(strEnder);
                 strOrder = string.Format("도우는 오리지널을 선택 하셨습니다. ({0}원)", iPrice);
             }
             else if (iOrder == 2)
             {
                 iPrice = 11000;
+                lboxOrderList.Items.Add(strEnder);
                 strOrder = string.Format("도우는 씬을 선택 하셨습니다. ({0}원)", iPrice);
             }
 

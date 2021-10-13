@@ -21,7 +21,7 @@ namespace UserControl_reward
 
         // 이미지
         [Category("UserProperty"), Description("Image")]
-        public Image UserFace  //속성
+        public Image UserFace  //디자인에 있는 속성명
         {
             get
             {

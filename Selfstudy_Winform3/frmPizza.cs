@@ -102,7 +102,7 @@ namespace Selfstudy_Winform3
             // ★ 탭탭해서 만들어준 Main함수또한 int(delegate영향)임!! 그쪽에서 return하면 iRet으로 옴
             int iRet = eventdelPizzaComplete("Pizza가 완성 되었습니다", iTotalTime);   
 
-            //eventdelPizzaComplete("Pizza가 완성 되었습니다", iTotalTime); <- delegate가 void였으면 이랬을것
+            // eventdelPizzaComplete("Pizza가 완성 되었습니다", iTotalTime); //<- delegate가 void거나 / return int 작업 싫으면 이래도OK
 
             orderComplete = true;
 
