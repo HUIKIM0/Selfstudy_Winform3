@@ -143,6 +143,7 @@ namespace Thread_study
 
 
         // while로 가서 !_bthreadStop 하면 false가 됨. true && false -> while문 탈출. 
+        // !Flag를 이용한 Run() 함수 종료!
         private void btnStop_Click(object sender, EventArgs e)
         {
             //ThreadAbort();   
