@@ -17,8 +17,8 @@ namespace Thread_study
         public event delMessage eventdelMessage;
 
 
-        string _strPlayerName = string.Empty;   //유저이름. 캡슐화 안하고 걍 여기에 public 해도 되지만 캡슐화가 좋대..
-        public string StrPlayerName { get => _strPlayerName; set => _strPlayerName = value; }  //캡슐화
+        string _strPlayerName = string.Empty;   
+        public string StrPlayerName { get => _strPlayerName; set => _strPlayerName = value; }  //캡슐화(함부로 Name 못 건들이게)
 
         Thread _thread = null;
 
@@ -32,7 +32,7 @@ namespace Thread_study
         public Play(string strPlayerName)
         {
             InitializeComponent();
-            lblPlayerName.Text = _strPlayerName = strPlayerName;  //가지고온 PlyerName을 전역에다가도 넣어줌
+            lblPlayerName.Text = _strPlayerName = strPlayerName;  //가지고온 PlyerName 넣기
         }
 
         public void fThreadStart()
@@ -120,7 +120,7 @@ namespace Thread_study
 
         }
 
-        //Thread가 돌다가 멈추는 타이밍을 찾아서 빠져나간다. 예외발생
+        //Thread가 돌다가 멈추는 타이밍을 찾아서 빠져나간다. 상태 체크 -> 예외로 이동 -> 멈춰있으면 종료,아니면 다시 RUN
        
         public void ThreadInterrupt()
         {
