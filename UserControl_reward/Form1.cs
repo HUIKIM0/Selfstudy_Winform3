@@ -24,10 +24,10 @@ namespace UserControl_reward
         {
             foreach (var oControls in pMain.Controls)     
             {
-                if(oControls is UCInfo)    //pMain에 담긴 컨트롤이 UCInfo인걸 찾을것
+                if(oControls is UCInfo)    
                 {
                    
-                    UCInfo oInfo = oControls as UCInfo;   //형태가 안정해진 var oControls를 UCInfo로 땅땅!!
+                    UCInfo oInfo = oControls as UCInfo;   
 
                     oInfo.eventDELEVENTsender += OInfo_eventDELEVENTsender;   
 
@@ -38,9 +38,10 @@ namespace UserControl_reward
         
         private int OInfo_eventDELEVENTsender(object sender, string strText)  // UCInfo , 수배/중지/검거 관련 텍스트
         {
-            UCInfo oInfo = sender as UCInfo;
 
-            lboxList.Items.Add(string.Format("No{0}. {1}", oInfo.UserNo, strText));     
+            UCInfo oInfo = sender as UCInfo;  
+
+            lboxList.Items.Add(string.Format("No.{0}) {1}", oInfo.UserNo ,strText));     
             return 0;
         }
 

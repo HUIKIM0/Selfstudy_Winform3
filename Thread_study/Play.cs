@@ -96,11 +96,13 @@ namespace Thread_study
 
             }
 
-            // Thread가 돌다가 WaitSleepJoin 상태가 되면 이쪽으로(Interrupt)
-            catch(ThreadInterruptedException exInterrupt)
+            // .Interrupt() 하면 이쪽으로. WaitSleepJoin 을 만나서 잠깐 멈춰진 상태일때 종료
+            // .Interrup() 타면 여기로 옴 -> 아직 WaitSleepJoin아니니까 Run()으로 -> 함수에 Thread.Sleep(300); 만남 -> 종료
+            catch (ThreadInterruptedException exInterrupt)
             {
                 exInterrupt.ToString();
             }
+            // .Abort() 하면 이쪽으로
             catch(Exception ex)
             {
                 ex.ToString();
@@ -113,20 +115,20 @@ namespace Thread_study
        
         public void ThreadAbort()
         {
-            if (_thread.IsAlive)   //Thread가 동작 중 일 경우
+            if (_thread.IsAlive)   //Thread가 동작 중인지 검사
             {
-                _thread.Abort();   // 강제 종료.   // catch(Exception ex)
+                _thread.Abort();   // 강제 종료.   // catch(Exception ex)으로 이동해서 강종
             }
 
         }
 
-        //Thread가 돌다가 멈추는 타이밍을 찾아서 빠져나간다. 상태 체크 -> 예외로 이동 -> 멈춰있으면 종료,아니면 다시 RUN
+        //Thread가 돌다가 멈추는 타이밍을 찾아서 빠져나간다. 
        
         public void ThreadInterrupt()
         {
             if (_thread.IsAlive)
-            {
-                _thread.Interrupt();     // catch(hreadInterruptedException exInterrupt)
+            {                            
+                _thread.Interrupt();     // catch(ThreadInterruptedException exInterrupt)
             }
         }
 
@@ -142,15 +144,16 @@ namespace Thread_study
         }
 
 
-        // while로 가서 !_bthreadStop 하면 false가 됨. true && false -> while문 탈출. 
+        // Thread 작동? _thread.IsAlive 확인하러 while로 간다 
+        // true로 변경했기 때문에 !_bthreadStop 하면 false가 됨. true && false -> while문 탈출. 
         // !Flag를 이용한 Run() 함수 종료!
         private void btnStop_Click(object sender, EventArgs e)
         {
-            //ThreadAbort();   
+            //ThreadInterrupt();   
 
-            if (_thread.IsAlive)
+            if (_thread.IsAlive)  
             {
-                _bthreadStop = true;    
+                _bthreadStop = true;
             }
 
         }

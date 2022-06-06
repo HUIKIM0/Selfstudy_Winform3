@@ -8,4 +8,4 @@ D:\dev\C#Work\Selfstudy_Winform3\UserControl_reward\obj\Debug\UserControl_reward
 D:\dev\C#Work\Selfstudy_Winform3\UserControl_reward\obj\Debug\UserControl_reward.exe
 D:\dev\C#Work\Selfstudy_Winform3\UserControl_reward\obj\Debug\UserControl_reward.pdb
 D:\dev\C#Work\Selfstudy_Winform3\UserControl_reward\obj\Debug\UserControl_reward.Form1.resources
-D:\dev\C#Work\Selfstudy_Winform3\UserControl_reward\obj\Debug\UserControl_reward.csprojAssemblyReference.cache
+D:\dev\C#Work\Selfstudy_Winform3\UserControl_reward\obj\Debug\UserControl_reward.csproj.AssemblyReference.cache
