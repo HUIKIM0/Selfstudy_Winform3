@@ -39,9 +39,9 @@ namespace UserControl_reward
         private int OInfo_eventDELEVENTsender(object sender, string strText)  // UCInfo , 수배/중지/검거 관련 텍스트
         {
 
-            UCInfo oInfo = sender as UCInfo;  
+            UCInfo oInfo = sender as UCInfo;
 
-            lboxList.Items.Add(string.Format("No.{0}) {1}", oInfo.UserNo ,strText));     
+            lboxList.Items.Add(string.Format("No.{0}) {1}", oInfo.UserNo ,strText));   
             return 0;
         }
 
